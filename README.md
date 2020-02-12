@@ -1,29 +1,53 @@
 # template.vue2
 
-## Project setup
+vue2 开发模板
+
+## 安装依赖
 
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 开发环境运行
 
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### 项目打包
 
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### 代码校验
 
 ```
 yarn lint
 ```
 
-### Customize configuration
+### 代码格式化
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+yanr format
+```
+
+### 生成 dll，加快打包编译
+
+```
+yanr build:dll
+```
+
+### 校验 => 格式化 => 打包
+
+```
+yarn build:auto
+```
+
+### 自定义配置
+
+[Configuration Reference](https://cli.vuejs.org/config/).
+
+### 代码风格
+
+[eslint-config-alloy](https://github.com/AlloyTeam/eslint-config-alloy#vue)

@@ -29,7 +29,7 @@ http.interceptors.request.use(
         return config;
     },
     (error) => {
-        console.error('http error:', error);
+        console.error('http request error:', error);
 
         return Promise.reject(error);
     }
@@ -45,11 +45,11 @@ http.interceptors.response.use(
 
             return data.data;
         } catch (err) {
-            // message.error(err);
+            return Promise.reject(err);
         }
     },
     (error) => {
-        console.error('http error:', error);
+        console.error('http response error:', error);
 
         return Promise.reject(error);
     }
@@ -68,22 +68,22 @@ const handleCode = function(code) {
             return;
 
         case 400:
-            return Promise.reject('请求错误');
+            return Promise.reject(new Error('请求错误'));
 
         case 401:
             Auth.removeToken();
             router.replace('/401');
 
-            return Promise.reject('登录过期, 请重新登录');
+            return Promise.reject(new Error('登录过期, 请重新登录'));
 
         case 403:
-            return Promise.reject('拒绝请求, 当前操作没有被授权(权限)');
+            return Promise.reject(new Error('拒绝请求, 当前操作没有被授权(权限)'));
 
         case 500:
-            return Promise.reject('服务器错误');
+            return Promise.reject(new Error('服务器错误'));
 
         default:
-            return Promise.reject('出现未知错误...' + code);
+            return Promise.reject(new Error('出现未知错误...' + code));
     }
 };
 
