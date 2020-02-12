@@ -43,6 +43,7 @@ module.exports = {
                     manifest: require(`${dllPath}/vendor.manifest.json`)
                 }
             ]);
+
             // 将 dll 注入到 生成的 html 模板中
             config
                 .plugin('addAssetHtml')
